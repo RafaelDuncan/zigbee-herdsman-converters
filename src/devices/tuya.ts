@@ -1608,7 +1608,7 @@ const definitions: Definition[] = [
         exposes: [
             tuya.exposes.lightBrightnessWithMinMax(),
             e.enum('power_on_behavior', ea.STATE_SET, ['off', 'on', 'previous']),
-            tuya.exposes.countdown(), tuya.exposes.lightType(),
+            tuya.exposes.countdown(), tuya.exposes.lightType(), tuya.exposes.switchType()
         ],
         meta: {
             tuyaDatapoints: [
@@ -1620,6 +1620,8 @@ const definitions: Definition[] = [
                 [5, 'max_brightness', tuya.valueConverter.scale0_254to0_1000],
                 [6, 'countdown', tuya.valueConverter.countdown],
                 [14, 'power_on_behavior', tuya.valueConverterBasic.lookup({'off': tuya.enum(0), 'on': tuya.enum(1), 'previous': tuya.enum(2)})],
+                [57, 'switchType', tuya.valueConverter.switchType({'toggle': tuya.enum(0), 'state': tuya.enum(1), 'momentary': tuya.enum(2)})],
+
             ],
         },
         whiteLabel: [
